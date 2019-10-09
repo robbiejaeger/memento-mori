@@ -14,4 +14,6 @@ I did not implement offline caching as a feature because I didn't think it made 
 
 ### Features - In Progress
 
-* [ ] Build Express server to serve static assets
+* [X] Build Express server to serve static assets
+* [ ] Add app manifest to enable PWA home screen icon
+* [ ] Request permission from the user for Push Notifications in the browser
