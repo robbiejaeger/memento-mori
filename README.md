@@ -22,5 +22,6 @@ I did not implement offline caching as a feature because I didn't think it made 
 * [ ] Add app manifest to enable PWA home screen icon
 
 Push Service specifics:
-* [ ] Get subscription object from browser
+* [X] Add VAPID public and private keys
+* [X] Get subscription object from browser
 * [ ] Setup DB on Express server to hold onto subscription object

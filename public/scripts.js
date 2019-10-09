@@ -1,4 +1,5 @@
 const notifyBtn = document.querySelector('#notify-me');
+const applicationServerPublicKey = 'BC55I1Q9r_xqe9M0forl3l8bRqRPWa2fY43uaZS45ikGGrhOmwuKhhBQV2Ycv89f0vP48_TFur3Vs7rf9p93m0I'; // VAPID public key
 
 notifyBtn.addEventListener('click', function() {
   if ('Notification' in window && navigator.serviceWorker) {
@@ -48,8 +49,8 @@ function subscribeUser() {
     navigator.serviceWorker.ready.then(function(reg) {
 
       reg.pushManager.subscribe({
-        userVisibleOnly: true
-        // Need VAPID key (public) from server
+        userVisibleOnly: true,
+        applicationServerKey: applicationServerPublicKey
       }).then(function(sub) {
         console.log('Subscription object:', sub);
       }).catch(function(e) {
