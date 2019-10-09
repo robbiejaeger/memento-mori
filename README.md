@@ -14,4 +14,4 @@ I did not implement offline caching as a feature because I didn't think it made 
 
 ### Features - In Progress
 
-* [ ] - Build Express server to serve static assets
+* [ ] Build Express server to serve static assets

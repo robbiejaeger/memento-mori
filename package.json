@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/robbiejaeger/memento-mori/issues"
   },
-  "homepage": "https://github.com/robbiejaeger/memento-mori#readme"
+  "homepage": "https://github.com/robbiejaeger/memento-mori#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
