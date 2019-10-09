@@ -24,4 +24,6 @@ I did not implement offline caching as a feature because I didn't think it made 
 Push Service specifics:
 * [X] Add VAPID public and private keys
 * [X] Get subscription object from browser
+* [X] POST subscriber object to the server to save
+* [ ] Save subscription object in `app.locals` in server (for now)
 * [ ] Setup DB on Express server to hold onto subscription object

@@ -51,8 +51,9 @@ function subscribeUser() {
       reg.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: applicationServerPublicKey
-      }).then(function(sub) {
-        console.log('Subscription object:', sub);
+      }).then(function(subscription) {
+        submitOrUpdateSubscriptionOnServer(subscription);
+        console.log('Subscription object:', subscription);
       }).catch(function(e) {
         if (Notification.permission === 'denied') {
           console.warn('Permission for notifications was denied');
@@ -60,6 +61,22 @@ function subscribeUser() {
           console.error('Unable to subscribe to push', e);
         }
       });
-    })
+    });
   }
+}
+
+function submitOrUpdateSubscriptionOnServer(subscription) {
+  fetch('http://localhost:3000/subscriptions', {
+    method: 'POST',
+    body: JSON.stringify({ subscription }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  .then(function(response) {
+    if (response.ok) console.log('Successfully posted subscription to server.');
+  })
+  .catch(function(err) {
+    console.error('Posting subscription failed:', err);
+  });
 }
