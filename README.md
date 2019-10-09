@@ -28,3 +28,7 @@ Push Service specifics:
 * [ ] Create JWT for push message
 * [ ] Save subscription object in `app.locals` in server (for now)
 * [ ] Setup DB on Express server to hold onto subscription object
+
+Not required:
+
+* [ ] Be able to unsubscribe from push notifications
