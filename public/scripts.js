@@ -4,6 +4,7 @@ notifyBtn.addEventListener('click', function() {
   if (window.Notification) {
     requestNotificationsPermission();
 
+    console.log(Notification.permission)
     if (Notification.permission === 'granted') {
       sendNotification();
     }
@@ -17,7 +18,7 @@ if ('serviceWorker' in navigator) {
         console.log('Service worker succeefully registered');
       })
       .catch(function(err) {
-        console.log('Service worker failed to register: ', err);
+        console.log('Service worker failed to register:', err);
       });
   });
 }
@@ -26,7 +27,7 @@ function requestNotificationsPermission() {
   Notification.requestPermission(function(status) {
     // Status is "denied", "granted", or "default"
     // "default" means they did not select Allow or Block
-    console.log('Notification status is: ', status);
+    console.log('Notification status is:', status);
   });
 }
 

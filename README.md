@@ -17,4 +17,6 @@ I did not implement offline caching as a feature because I didn't think it made 
 * [X] Build Express server to serve static assets
 * [ ] Add app manifest to enable PWA home screen icon
 * [X] Request permission from the user for Push Notifications in the browser
-* [ ] Send a push notification activated from the browser
+* [X] Send a basic push notification activated from the browser
+* [ ] Add relevant information and image to the push notification for this app
+* [ ] Handle what happens when the push notification is clicked
