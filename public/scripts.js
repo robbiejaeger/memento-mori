@@ -1,7 +1,7 @@
 const notifyBtn = document.querySelector('#notify-me');
 
 notifyBtn.addEventListener('click', function() {
-  if (window.Notification) {
+  if ('Notification' in window && navigator.serviceWorker) {
     requestNotificationsPermission();
 
     console.log(Notification.permission)
