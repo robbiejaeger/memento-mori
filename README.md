@@ -19,7 +19,7 @@ I did not implement offline caching as a feature because I didn't think it made 
 * [X] Send a basic push notification activated from the browser
 * [ ] Add relevant information and image to the push notification for this app
 * [ ] Handle what happens when the push notification is clicked
-* [ ] Add app manifest to enable PWA home screen icon
+* [ ] Add unique identifier for user (maybe through OAuth...)
 
 Push Service specifics:
 * [X] Add VAPID public and private keys
@@ -33,3 +33,4 @@ Push Service specifics:
 Not required:
 
 * [ ] Be able to unsubscribe from push notifications
+* [ ] Add app manifest to enable PWA home screen icon
