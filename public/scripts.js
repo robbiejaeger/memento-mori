@@ -4,11 +4,10 @@ const applicationServerPublicKey = 'BC55I1Q9r_xqe9M0forl3l8bRqRPWa2fY43uaZS45ikG
 notifyBtn.addEventListener('click', function() {
   if ('Notification' in window && navigator.serviceWorker) {
     requestNotificationsPermission();
-    console.log(Notification.permission)
+    console.log('Notification permission:', Notification.permission);
 
     if (Notification.permission === 'granted') {
       subscribeUser();
-      sendNotification();
     }
   }
 });
@@ -17,7 +16,7 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('./serviceWorker.js')
       .then(function(reg) {
-        console.log('Service worker successfully registered');
+        console.log('Service worker successfully registered.');
       })
       .catch(function(err) {
         console.error('Service worker failed to register:', err);
@@ -29,17 +28,6 @@ function requestNotificationsPermission() {
   Notification.requestPermission(function(status) {
     console.log('Notification status is:', status);
   });
-}
-
-function sendNotification() {
-  navigator.serviceWorker.getRegistration()
-    .then(function(reg) {
-      const notificationOptions = {
-        body: 'Some body text.'
-      };
-
-      reg.showNotification('Push from the client!', notificationOptions);
-    });
 }
 
 function subscribeUser() {
@@ -56,7 +44,7 @@ function subscribeUser() {
         if (Notification.permission === 'denied') {
           console.warn('Permission for notifications was denied');
         } else {
-          console.error('Unable to subscribe to push', err);
+          console.error('Unable to subscribe to push:', err);
         }
       });
     });
@@ -64,7 +52,7 @@ function subscribeUser() {
 }
 
 function submitOrUpdateSubscriptionOnServer(subscription) {
-  fetch('http://localhost:3000/subscriptions', {
+  fetch('/subscriptions', {
     method: 'POST',
     body: JSON.stringify({ subscription }),
     headers: {
