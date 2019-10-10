@@ -27,8 +27,6 @@ if ('serviceWorker' in navigator) {
 
 function requestNotificationsPermission() {
   Notification.requestPermission(function(status) {
-    // Status is "denied", "granted", or "default"
-    // "default" means they did not select Allow or Block
     console.log('Notification status is:', status);
   });
 }
@@ -37,10 +35,10 @@ function sendNotification() {
   navigator.serviceWorker.getRegistration()
     .then(function(reg) {
       const notificationOptions = {
-        body: 'Body text'
+        body: 'Some body text.'
       };
 
-      reg.showNotification('Hello', notificationOptions);
+      reg.showNotification('Push from the client!', notificationOptions);
     });
 }
 
@@ -54,11 +52,11 @@ function subscribeUser() {
       }).then(function(subscription) {
         submitOrUpdateSubscriptionOnServer(subscription);
         console.log('Subscription object:', subscription);
-      }).catch(function(e) {
+      }).catch(function(err) {
         if (Notification.permission === 'denied') {
           console.warn('Permission for notifications was denied');
         } else {
-          console.error('Unable to subscribe to push', e);
+          console.error('Unable to subscribe to push', err);
         }
       });
     });

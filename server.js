@@ -8,12 +8,11 @@ webpush.setVapidDetails(
   process.env.VAPID_PUBLIC_KEY,
   process.env.VAPID_PRIVATE_KEY
 );
+app.locals.subscription = {};
 
 app.set('port', process.env.PORT || 3000);
 app.use(express.static('public'));
 app.use(express.json());
-
-app.locals.subscription = {};
 
 app.post('/subscriptions', (request, response) => {
   const { subscription } = request.body;
@@ -25,8 +24,11 @@ app.post('/subscriptions', (request, response) => {
 app.get('/sendapush', (request, response) => {
   webpush.sendNotification(app.locals.subscription, 'A reminder of your mortality')
     .then(function(serviceResponse) {
-      console.log(serviceResponse);
-      return response.status(200).json({ serviceResponse });
+      if (serviceResponse.statusCode === 201) {
+        return response.status(200).json({ serviceResponse });
+      } else {
+        return response.status(500).json({ serviceResponse });
+      }
     })
     .catch(function(err) {
       return response.status(500).json({ err });

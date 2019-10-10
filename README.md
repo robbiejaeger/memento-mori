@@ -25,8 +25,9 @@ Push Service specifics:
 * [X] Add VAPID public and private keys
 * [X] Get subscription object from browser
 * [X] POST subscriber object to the server to save
-* [ ] Create JWT for push message
-* [ ] Save subscription object in `app.locals` in server (for now)
+* [X] Save subscription object in `app.locals` in server (for now)
+* [X] Setup web push library to submit a push event
+* [X] Trigger push event via server endpoint (externally from Postman)
 * [ ] Setup DB on Express server to hold onto subscription object
 
 Not required:
