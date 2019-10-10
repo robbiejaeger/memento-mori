@@ -28,11 +28,11 @@ Items that were not learning goals:
 Push Service specifics:
 * [X] Add VAPID public and private keys
 * [X] Get subscription object from browser
-* [X] POST subscriber object to the server to save
+* [X] POST subscription object to the server to save
 * [X] Save subscription object in `app.locals` in server (for now)
 * [X] Setup [web-push](https://www.npmjs.com/package/web-push) library to submit a push event
 * [X] Trigger push event via server endpoint (externally from Postman)
-* [ ] Setup DB on Express server to hold onto subscription object
+* [ ] Setup persistent DB on Express server to hold onto subscription object
 
 Not required:
 
