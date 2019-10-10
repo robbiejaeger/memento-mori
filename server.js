@@ -1,7 +1,13 @@
 const express = require('express');
 const app = express();
-const jwt = require('jsonwebtoken');
 require('dotenv').config();
+
+const webpush = require('web-push');
+webpush.setVapidDetails(
+  `mailto:${process.env.EMAIL}`,
+  process.env.VAPID_PUBLIC_KEY,
+  process.env.VAPID_PRIVATE_KEY
+);
 
 app.set('port', process.env.PORT || 3000);
 app.use(express.static('public'));
@@ -14,6 +20,17 @@ app.post('/subscriptions', (request, response) => {
   app.locals.subscription = subscription;
 
   return response.status(201).json({ subscription });
+});
+
+app.get('/sendapush', (request, response) => {
+  webpush.sendNotification(app.locals.subscription, 'A reminder of your mortality')
+    .then(function(serviceResponse) {
+      console.log(serviceResponse);
+      return response.status(200).json({ serviceResponse });
+    })
+    .catch(function(err) {
+      return response.status(500).json({ err });
+    })
 });
 
 app.listen(app.get('port'), () => {
