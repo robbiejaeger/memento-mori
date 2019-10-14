@@ -55,8 +55,26 @@ app.post('/subscriptions', (request, response) => {
     })
 });
 
-app.get('/sendapush', (request, response) => {
-  webpush.sendNotification(app.locals.subscription, 'A reminder of your mortality')
+app.post('/sendapush', (request, response) => {
+  const { uid } = request.body;
+
+  database('subscriptions')
+    .where({google_auth_uid: uid})
+    .then(function(user) {
+      if (user.length) {
+        const subscription = JSON.parse(user[0].subscription);
+        return sendPush(request, response, subscription);
+      } else {
+        return response.status(404).json({ error: `Could not find subscription with uid: ${uid}`});
+      }
+    })
+    .catch(function(err) {
+      return response.status(500).json({ err });
+    });  
+});
+
+function sendPush(request, response, subscription) {
+  webpush.sendNotification(subscription, 'A reminder of your mortality')
     .then(function(serviceResponse) {
       if (serviceResponse.statusCode === 201) {
         return response.status(200).json({ serviceResponse });
@@ -66,8 +84,8 @@ app.get('/sendapush', (request, response) => {
     })
     .catch(function(err) {
       return response.status(500).json({ err });
-    })
-});
+    });
+}
 
 app.listen(app.get('port'), () => {
   console.log(`Practice web push server running on http://localhost:${app.get('port')}`);
