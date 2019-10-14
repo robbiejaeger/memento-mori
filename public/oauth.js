@@ -28,13 +28,16 @@ document.getElementById('login').addEventListener('click', function() {
   }
 });
 
+function getUidForLoggedInUser() {
+  return firebase.auth().currentUser.uid;
+}
+
 function initApp() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       // Signed In
       const displayName = user.displayName;
       const email = user.email;
-      const uid = user.uid;
       const providerData = user.providerData;
 
       document.getElementById('user-welcome').textContent = `Hello, ${displayName}`;

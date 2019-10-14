@@ -38,7 +38,8 @@ function subscribeUser() {
         userVisibleOnly: true,
         applicationServerKey: applicationServerPublicKey
       }).then(function(subscription) {
-        submitOrUpdateSubscriptionOnServer('2', subscription);
+        const uid = getUidForLoggedInUser();
+        submitOrUpdateSubscriptionOnServer(uid, subscription);
         console.log('Subscription object:', subscription);
       }).catch(function(err) {
         if (Notification.permission === 'denied') {
