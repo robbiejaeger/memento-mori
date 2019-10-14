@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 
+// Web Push
 const webpush = require('web-push');
 webpush.setVapidDetails(
   `mailto:${process.env.EMAIL}`,
@@ -10,6 +11,10 @@ webpush.setVapidDetails(
 );
 app.locals.subscription = {};
 
+// Knex
+
+
+// Endpoints
 app.set('port', process.env.PORT || 3000);
 app.use(express.static('public'));
 app.use(express.json());
