@@ -21,7 +21,7 @@ document.getElementById('login').addEventListener('click', function() {
     firebase.auth().signOut().then(function() {
       console.log('Signed out successfully.');
     }).catch(function(err) {
-      console.error('Sign out failed:', err)
+      console.error('Sign out failed:', err);
     });
   } else {
     authUI.start('#firebaseui-auth-container', authUIConfig);

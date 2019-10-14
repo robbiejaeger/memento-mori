@@ -24,6 +24,7 @@ Items that were not learning goals:
 * [ ] Handle what happens when the push notification is clicked
 * [ ] Add unique identifier for user (maybe through OAuth...)
 * [ ] Put on production to increase testing of users and devices
+* [ ] Add random push notifications for clients from the server directly (not triggered externally from Postman, for instance)
 
 Push Service specifics:
 * [X] Add VAPID public and private keys
@@ -38,3 +39,4 @@ Not required:
 
 * [ ] Be able to unsubscribe from push notifications
 * [ ] Add app manifest to enable PWA home screen icon
+* [ ] Have a strategy for multiple devices under the same user account (how do you detect when someone is signed in if you have a subscription for that device? If they don't, how do you ask in a not annoying way?...)
