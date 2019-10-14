@@ -33,7 +33,7 @@ Push Service specifics:
 * [X] Save subscription object in `app.locals` in server (for now)
 * [X] Setup [web-push](https://www.npmjs.com/package/web-push) library to submit a push event
 * [X] Trigger push event via server endpoint (externally from Postman)
-* [ ] Setup persistent DB on Express server to hold onto subscription object
+* [ ] Setup persistent DB on Express server to hold onto _one_ subscription object per google auth uid
 
 Not required:
 

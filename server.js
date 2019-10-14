@@ -2,6 +2,11 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 
+// 
+app.set('port', process.env.PORT || 3000);
+app.use(express.static('public'));
+app.use(express.json());
+
 // Web Push
 const webpush = require('web-push');
 webpush.setVapidDetails(
@@ -12,18 +17,42 @@ webpush.setVapidDetails(
 app.locals.subscription = {};
 
 // Knex
-
+const environment = process.env.NODE_ENV || 'development';
+const configuration = require('./knexfile')[environment];
+const database = require('knex')(configuration);
 
 // Endpoints
-app.set('port', process.env.PORT || 3000);
-app.use(express.static('public'));
-app.use(express.json());
-
 app.post('/subscriptions', (request, response) => {
-  const { subscription } = request.body;
-  app.locals.subscription = subscription;
-
-  return response.status(201).json({ subscription });
+  const { uid, subscription } = request.body;
+  
+  // Check if google auth uid exists
+  database('subscriptions').where({ google_auth_uid: uid })
+    .then(function(subscriptions) {
+      // If the uid exists, replace the subscrption object
+      if (subscriptions.length) {
+        database('subscriptions')
+          .where({ google_auth_uid: uid })
+          .update('subscription', JSON.stringify(subscription))
+          .then(function() {
+            return response.status(200).json({message: 'Subscription updated'});
+          })
+          .catch(function(err) {
+            return response.status(500).json({ err });      
+          });
+      } else {
+        database('subscriptions')
+          .insert({google_auth_uid: uid, subscription})
+          .then(function(subscription) {
+            return response.status(201).json({message: 'New subscription created'})
+          })
+          .catch(function(err) {
+            return response.status(500).json({ err });      
+          });
+      }
+    })
+    .catch(function(err) {
+      return response.status(500).json({ err });
+    })
 });
 
 app.get('/sendapush', (request, response) => {

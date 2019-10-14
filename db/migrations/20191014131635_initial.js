@@ -4,11 +4,11 @@ exports.up = function(knex) {
     knex.schema.createTable('subscriptions', function(table) {
       table.increments('id').primary();
       table.string('google_auth_uid');
-      table.string('subscription');
+      table.text('subscription');
 
       table.timestamps(true, true);
     })
-  ])
+  ]);
 };
 
 

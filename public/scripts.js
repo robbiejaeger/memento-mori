@@ -38,7 +38,7 @@ function subscribeUser() {
         userVisibleOnly: true,
         applicationServerKey: applicationServerPublicKey
       }).then(function(subscription) {
-        submitOrUpdateSubscriptionOnServer(subscription);
+        submitOrUpdateSubscriptionOnServer('2', subscription);
         console.log('Subscription object:', subscription);
       }).catch(function(err) {
         if (Notification.permission === 'denied') {
@@ -51,16 +51,20 @@ function subscribeUser() {
   }
 }
 
-function submitOrUpdateSubscriptionOnServer(subscription) {
+function submitOrUpdateSubscriptionOnServer(uid, subscription) {
   fetch('/subscriptions', {
     method: 'POST',
-    body: JSON.stringify({ subscription }),
+    body: JSON.stringify({ uid, subscription }),
     headers: {
       'Content-Type': 'application/json'
     }
   })
   .then(function(response) {
-    if (response.ok) console.log('Successfully posted subscription to server.');
+    if (response.ok) {
+      response.json().then(function(message) { console.log(message); });
+    } else {
+      response.json().then(function(message) { console.log('Error:', message); });
+    }
   })
   .catch(function(err) {
     console.error('Posting subscription failed:', err);
