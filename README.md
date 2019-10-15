@@ -22,8 +22,8 @@ Items that were not learning goals:
 * [X] Send a basic push notification activated from the browser (implemented but removed from the app)
 * [ ] Add relevant information and image to the push notification for this app
 * [ ] Handle what happens when the push notification is clicked
-* [ ] Add unique identifier for user (maybe through OAuth...)
-* [ ] Put on production to increase testing of users and devices
+* [X] Add unique identifier for user - for now it's the Google OAuth uid
+* [X] Put on production to increase testing of users and devices
 * [ ] Add random push notifications for clients from the server directly (not triggered externally from Postman, for instance)
 
 Push Service specifics:
@@ -33,7 +33,7 @@ Push Service specifics:
 * [X] Save subscription object in `app.locals` in server (for now)
 * [X] Setup [web-push](https://www.npmjs.com/package/web-push) library to submit a push event
 * [X] Trigger push event via server endpoint (externally from Postman)
-* [ ] Setup persistent DB on Express server to hold onto _one_ subscription object per google auth uid
+* [X] Setup persistent DB on Express server to hold onto _one_ subscription object per Google OAuth uid
 
 Not required:
 
