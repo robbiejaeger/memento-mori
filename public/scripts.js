@@ -65,8 +65,10 @@ function submitOrUpdateSubscriptionOnServer(uid, subscription) {
   .then(function(response) {
     if (response.ok) {
       response.json().then(function(message) { console.log(message); });
+      document.getElementById('user-message').textContent = 'You have been signed up to be reminded!';
     } else {
       response.json().then(function(message) { console.log('Error:', message); });
+      document.getElementById('user-message').textContent = 'Something went wrong with your reminder subscription.';
     }
   })
   .catch(function(err) {

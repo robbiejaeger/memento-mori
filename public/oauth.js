@@ -45,6 +45,7 @@ function initApp() {
       document.getElementById('notify-me').style.display = 'none';
       document.getElementById('user-welcome').textContent = 'Sign in to use the app';
       document.getElementById('login').textContent = 'Sign In';
+      document.getElementById('user-message').textContent = '';
     }
   }, function(err) {
     console.error('Something happened on auth state change:', err);
