@@ -37,9 +37,6 @@ function initApp() {
     if (user) {
       // Signed In
       const displayName = user.displayName;
-      const email = user.email;
-      const providerData = user.providerData;
-
       document.getElementById('user-welcome').textContent = `Hello, ${displayName}`;
       document.getElementById('login').textContent = 'Sign Out';
     } else {
@@ -48,7 +45,7 @@ function initApp() {
       document.getElementById('login').textContent = 'Sign In';
     }
   }, function(err) {
-    console.error('Something happned on auth state change:', err);
+    console.error('Something happened on auth state change:', err);
   });
 };
 
