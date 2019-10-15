@@ -37,10 +37,12 @@ function initApp() {
     if (user) {
       // Signed In
       const displayName = user.displayName;
+      document.getElementById('notify-me').style.display = 'inline-block';
       document.getElementById('user-welcome').textContent = `Hello, ${displayName}`;
       document.getElementById('login').textContent = 'Sign Out';
     } else {
       // Signed Out
+      document.getElementById('notify-me').style.display = 'none';
       document.getElementById('user-welcome').textContent = 'Sign in to use the app';
       document.getElementById('login').textContent = 'Sign In';
     }

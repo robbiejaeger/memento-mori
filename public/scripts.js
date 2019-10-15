@@ -4,11 +4,6 @@ const applicationServerPublicKey = 'BC55I1Q9r_xqe9M0forl3l8bRqRPWa2fY43uaZS45ikG
 notifyBtn.addEventListener('click', function() {
   if ('Notification' in window && navigator.serviceWorker) {
     requestNotificationsPermission();
-    console.log('Notification permission:', Notification.permission);
-
-    if (Notification.permission === 'granted') {
-      subscribeUser();
-    }
   }
 });
 
@@ -25,9 +20,16 @@ if ('serviceWorker' in navigator) {
 }
 
 function requestNotificationsPermission() {
-  Notification.requestPermission(function(status) {
-    console.log('Notification status is:', status);
-  });
+  Notification.requestPermission()
+    .then(function(result) {
+      console.log('Notification permission:', Notification.permission);
+      if (result === 'granted') {
+        subscribeUser();
+      }
+    })
+    .catch(function(err) {
+      console.error('Something went wrong with notification permission request:', err);
+    });
 }
 
 function subscribeUser() {
