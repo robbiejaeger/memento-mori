@@ -40,11 +40,3 @@ Not required:
 * [ ] Be able to unsubscribe from push notifications
 * [ ] Add app manifest to enable PWA home screen icon
 * [ ] Have a strategy for multiple devices under the same user account (how do you detect when someone is signed in if you have a subscription for that device? If they don't, how do you ask in a not annoying way?...)
-
-### User Flow
-
-New User - First Time to Page:
-
-1. They see the title of the page, a summary of what it is, the option to login (why they need to login)
-2. Login through Google OAuth
-3. They see a button to get notifications, the browser asks them if they want to allow notifications, and based on that answer they are signed up or notified that they need to allow notifications...
