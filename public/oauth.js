@@ -24,6 +24,8 @@ document.getElementById('login').addEventListener('click', function() {
       console.error('Sign out failed:', err);
     });
   } else {
+    document.getElementById('login').style.display = 'none';
+    document.getElementById('firebaseui-auth-container').style.display = 'block';
     authUI.start('#firebaseui-auth-container', authUIConfig);
   }
 });
@@ -37,14 +39,18 @@ function initApp() {
     if (user) {
       // Signed In
       const displayName = user.displayName;
+      document.getElementById('firebaseui-auth-container').style.display = 'none';
       document.getElementById('notify-me').style.display = 'block';
       document.getElementById('user-welcome').textContent = `Hello, ${displayName}`;
+      document.getElementById('login').style.display = 'block';
       document.getElementById('login').textContent = 'Sign Out';
     } else {
       // Signed Out
+      document.getElementById('firebaseui-auth-container').style.display = 'none';
       document.getElementById('notify-me').style.display = 'none';
-      document.getElementById('login').textContent = 'Sign In for Notifications';
+      document.getElementById('login').textContent = 'Sign In to Be Notified';
       document.getElementById('user-welcome').textContent = '';
+      document.getElementById('user-message').textContent = '';
     }
   }, function(err) {
     console.error('Something happened on auth state change:', err);
