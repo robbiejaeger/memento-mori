@@ -44,7 +44,7 @@ function initApp() {
       // Signed Out
       document.getElementById('notify-me').style.display = 'none';
       document.getElementById('login').textContent = 'Sign In for Notifications';
-      document.getElementById('user-message').textContent = '';
+      document.getElementById('user-welcome').textContent = '';
     }
   }, function(err) {
     console.error('Something happened on auth state change:', err);
