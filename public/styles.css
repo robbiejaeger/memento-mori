@@ -1,4 +1,14 @@
 body {
   background: #DDD;
   text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-family: 'Carter One', Verdana, sans-serif;
+}
+
+button {
+  height: 50px;
+  width: 200px;
 }

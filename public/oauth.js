@@ -43,7 +43,7 @@ function initApp() {
     } else {
       // Signed Out
       document.getElementById('notify-me').style.display = 'none';
-      document.getElementById('user-welcome').textContent = 'Sign in to use the app';
+      document.getElementById('user-welcome').textContent = 'Sign In to Get Notifications';
       document.getElementById('login').textContent = 'Sign In';
       document.getElementById('user-message').textContent = '';
     }
