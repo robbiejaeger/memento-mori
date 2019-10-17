@@ -1,14 +1,50 @@
+/*
+Primary
+#00695F
+#009688
+#33AB9F
+
+Secondary
+#4615B2
+#651FFF
+#834BFF
+*/
+
 body {
-  background: #DDD;
+  background: #FFF;
   text-align: center;
   font-family: Arial, sans-serif;
 }
 
+header {
+  background: #00695F;
+  color: #FFF;
+  padding: 20px 0 10px;
+  margin-bottom: 30px;
+}
+
 h1 {
   font-family: 'Carter One', Verdana, sans-serif;
+  font-size: 3em;
+  margin: 0 auto;
+}
+
+.logo {
+  height: 300px;
+  margin: 20px auto 10px;
 }
 
 button {
   height: 50px;
   width: 200px;
+  border: none;
+  background-color: #4615B2;
+  color: #FFF;
+  margin: 10px auto;
+  transition: background-color 0.5s ease;
+}
+
+button:hover, button:active {
+  background-color: #651FFF;
+  color: #FFF;
 }
