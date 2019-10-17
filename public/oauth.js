@@ -37,7 +37,7 @@ function initApp() {
     if (user) {
       // Signed In
       const displayName = user.displayName;
-      document.getElementById('notify-me').style.display = 'inline-block';
+      document.getElementById('notify-me').style.display = 'block';
       document.getElementById('user-welcome').textContent = `Hello, ${displayName}`;
       document.getElementById('login').textContent = 'Sign Out';
     } else {
