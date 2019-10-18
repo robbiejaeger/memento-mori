@@ -1,4 +1,10 @@
 const notifyBtn = document.querySelector('#notify-me');
+const authContainer = document.getElementById('firebaseui-auth-container');
+const remindMeBtn = document.getElementById('remind-me');
+const userWelcomeMsg = document.getElementById('user-welcome');
+const userInfoMsg = document.getElementById('user-info-message');
+const loginBtn = document.getElementById('login');
+
 const applicationServerPublicKey = 'BC55I1Q9r_xqe9M0forl3l8bRqRPWa2fY43uaZS45ikGGrhOmwuKhhBQV2Ycv89f0vP48_TFur3Vs7rf9p93m0I'; // VAPID public key
 
 notifyBtn.addEventListener('click', function() {
@@ -65,10 +71,10 @@ function submitOrUpdateSubscriptionOnServer(uid, subscription) {
   .then(function(response) {
     if (response.ok) {
       response.json().then(function(message) { console.log(message); });
-      document.getElementById('user-message').textContent = 'Your device has been signed up to be reminded!';
+      userInfoMsg.textContent = 'Your device has been signed up to be reminded!';
     } else {
       response.json().then(function(message) { console.log('Error:', message); });
-      document.getElementById('user-message').textContent = 'Something went wrong with your reminder...';
+      userInfoMsg.textContent = 'Something went wrong with your reminder...';
     }
   })
   .catch(function(err) {

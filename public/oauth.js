@@ -16,7 +16,7 @@ const authUIConfig = {
 
 const authUI = new firebaseui.auth.AuthUI(firebase.auth());
 
-document.getElementById('login').addEventListener('click', function() {
+loginBtn.addEventListener('click', function() {
   if (firebase.auth().currentUser) {
     firebase.auth().signOut().then(function() {
       console.log('Signed out successfully.');
@@ -24,8 +24,8 @@ document.getElementById('login').addEventListener('click', function() {
       console.error('Sign out failed:', err);
     });
   } else {
-    document.getElementById('login').style.display = 'none';
-    document.getElementById('firebaseui-auth-container').style.display = 'block';
+    loginBtn.style.display = 'none';
+    authContainer.style.display = 'block';
     authUI.start('#firebaseui-auth-container', authUIConfig);
   }
 });
@@ -39,18 +39,18 @@ function initApp() {
     if (user) {
       // Signed In
       const displayName = user.displayName;
-      document.getElementById('firebaseui-auth-container').style.display = 'none';
-      document.getElementById('notify-me').style.display = 'block';
-      document.getElementById('user-welcome').textContent = `Hi, ${displayName}.`;
-      document.getElementById('login').style.display = 'block';
-      document.getElementById('login').textContent = 'Sign Out';
+      authContainer.style.display = 'none';
+      remindMeBtn.style.display = 'block';
+      userWelcomeMsg.textContent = `Hi, ${displayName}.`;
+      loginBtn.style.display = 'block';
+      loginBtn.textContent = 'Sign Out';
     } else {
       // Signed Out
-      document.getElementById('firebaseui-auth-container').style.display = 'none';
-      document.getElementById('notify-me').style.display = 'none';
-      document.getElementById('login').textContent = 'Sign In to Be Notified';
-      document.getElementById('user-welcome').textContent = '';
-      document.getElementById('user-message').textContent = '';
+      authContainer.style.display = 'none';
+      remindMeBtn.style.display = 'none';
+      loginBtn.textContent = 'Sign In to Be Notified';
+      userWelcomeMsg.textContent = '';
+      userInfoMsg.textContent = '';
     }
   }, function(err) {
     console.error('Something happened on auth state change:', err);
