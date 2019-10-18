@@ -40,24 +40,33 @@ h1 {
   padding: 0 10px;
 }
 
-button {
+.btn {
   height: 50px;
-  width: 200px;
-  border: none;
-  background-color: #4615B2;
-  color: #FFF;
+  width: 200px;  
   display: block;
   margin: 10px auto;
   transition: background-color 0.5s ease;
 }
 
-button:hover {
-  background-color: #651FFF;
+.primary-btn {
+  border: none;
+  background-color: #4615B2;
   color: #FFF;
 }
 
-#login {
+.primary-btn:hover {
+  background-color: #834BFF;
+  color: #FFF;
+}
+
+.secondary-btn {
   border: 2px solid #4615B2;
   background-color: #FFF;
   color: #4615B2;
+}
+
+.secondary-btn:hover {
+  border: 2px solid #834BFF;
+  background-color: #834BFF;
+  color: #FFF;
 }
