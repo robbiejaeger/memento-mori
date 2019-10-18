@@ -41,7 +41,7 @@ function initApp() {
       const displayName = user.displayName;
       document.getElementById('firebaseui-auth-container').style.display = 'none';
       document.getElementById('notify-me').style.display = 'block';
-      document.getElementById('user-welcome').textContent = `Hello, ${displayName}`;
+      document.getElementById('user-welcome').textContent = `Hi, ${displayName}.`;
       document.getElementById('login').style.display = 'block';
       document.getElementById('login').textContent = 'Sign Out';
     } else {
