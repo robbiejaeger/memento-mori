@@ -40,14 +40,14 @@ function initApp() {
       // Signed In
       const displayName = user.displayName;
       authContainer.style.display = 'none';
-      remindMeBtn.style.display = 'block';
+      notifyBtn.style.display = 'block';
       userWelcomeMsg.textContent = `Hi, ${displayName}.`;
       loginBtn.style.display = 'block';
       loginBtn.textContent = 'Sign Out';
     } else {
       // Signed Out
       authContainer.style.display = 'none';
-      remindMeBtn.style.display = 'none';
+      notifyBtn.style.display = 'none';
       loginBtn.textContent = 'Sign In to Be Notified';
       userWelcomeMsg.textContent = '';
       userInfoMsg.textContent = '';

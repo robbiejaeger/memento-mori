@@ -3,7 +3,8 @@ self.addEventListener('push', function(event) {
 
   event.waitUntil(
     self.registration.showNotification(title, {
-      body: 'Do what is important to you.'
+      body: 'Do what is important to you.',
+      icon: './skull-192px.png'
     })
   );
 });
