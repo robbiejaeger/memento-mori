@@ -51,8 +51,10 @@ function subscribeUser() {
         console.log('Subscription object:', subscription);
       }).catch(function(err) {
         if (Notification.permission === 'denied') {
+          userInfoMsg.textContent = 'This page has notifications disabled. Turn notificaions on.';
           console.warn('Permission for notifications was denied');
         } else {
+          userInfoMsg.textContent = 'Unable to subscribe to notifications for this device.';
           console.error('Unable to subscribe to push:', err);
         }
       });
