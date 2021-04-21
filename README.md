@@ -2,7 +2,7 @@
 
 Inspired by the [WeCroak](https://www.wecroak.com/) app.
 
-Sign up to receive push notifications at somewhat random intervals of time (between 4 and 14 days) that say "A reminder that you are going to die someday." Do with the notification what you see fit.
+Sign up to receive push notifications at somewhat random intervals of time (between 4 and 14 days) that say "A reminder that you aren't going to live forever." - a reminder to make the most out of life.
 
 ---
 
@@ -12,8 +12,8 @@ I wanted to learn about implementing the [Push API](https://developers.google.co
 
 Items that were not learning goals:
 
-* I did not implement offline caching as a feature because I didn't think it made sense for this app
-* Keep file structure simple with no bundler/build tools (at least for now)
+* No offline caching through the service worker
+* Keep file structure simple with no bundler/build tools
 
 ### Features - In Progress
 
