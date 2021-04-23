@@ -2,10 +2,12 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 
-// 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 3001);
 app.use(express.static('public'));
 app.use(express.json());
+
+const cors = require('cors');
+app.use(cors());
 
 // Web Push
 const webpush = require('web-push');
@@ -14,7 +16,6 @@ webpush.setVapidDetails(
   process.env.VAPID_PUBLIC_KEY,
   process.env.VAPID_PRIVATE_KEY
 );
-app.locals.subscription = {};
 
 // Knex
 const environment = process.env.NODE_ENV || 'development';
@@ -24,7 +25,7 @@ const database = require('knex')(configuration);
 // Endpoints
 app.post('/subscriptions', (request, response) => {
   const { uid, subscription } = request.body;
-  
+
   // Check if google auth uid exists
   database('subscriptions').where({ google_auth_uid: uid })
     .then(function(subscriptions) {
@@ -37,7 +38,7 @@ app.post('/subscriptions', (request, response) => {
             return response.status(200).json({message: 'Subscription updated'});
           })
           .catch(function(err) {
-            return response.status(500).json({ err });      
+            return response.status(500).json({ err });
           });
       } else {
         database('subscriptions')
@@ -46,7 +47,7 @@ app.post('/subscriptions', (request, response) => {
             return response.status(201).json({message: 'New subscription created'})
           })
           .catch(function(err) {
-            return response.status(500).json({ err });      
+            return response.status(500).json({ err });
           });
       }
     })
@@ -70,11 +71,11 @@ app.post('/sendapush', (request, response) => {
     })
     .catch(function(err) {
       return response.status(500).json({ err });
-    });  
+    });
 });
 
 function sendPush(request, response, subscription) {
-  webpush.sendNotification(subscription, 'A reminder of your mortality')
+  webpush.sendNotification(subscription, 'A reminder that you aren\'t going to live forever.')
     .then(function(serviceResponse) {
       if (serviceResponse.statusCode === 201) {
         return response.status(200).json({ serviceResponse });
