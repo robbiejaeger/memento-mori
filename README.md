@@ -4,6 +4,8 @@ Inspired by the [WeCroak](https://www.wecroak.com/) app.
 
 Sign up to receive push notifications at somewhat random intervals of time (between 4 and 14 days) that say "A reminder that you aren't going to live forever." - a reminder to make the most out of life.
 
+<img src="./public/ui.png" alt="screenshot of UI" height="600">
+
 ---
 
 ### Learning Goals
