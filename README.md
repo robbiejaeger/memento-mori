@@ -17,28 +17,18 @@ Items that were not learning goals:
 * No offline caching through the service worker
 * Keep file structure simple with no bundler/build tools
 
+### App Features
+
+* User sign's in via Google Auth (using Firebase)
+* Requests permission from the user for Push Notifications in their browser window
+* Gets subscription object from user's browser and saves that object to the DB along with their Google UID
+* Backend sends a notification event to the client's browser using Web Push API (currently triggered via endpoint on the server, `/sendapush`)
+
 ### Features - In Progress
 
-* [X] Build Express server to serve static assets
-* [X] Request permission from the user for Push Notifications in the browser
-* [X] Send a basic push notification activated from the browser (implemented but removed from the app)
-* [ ] Add relevant information and image to the push notification for this app
-* [ ] Handle what happens when the push notification is clicked
-* [X] Add unique identifier for user - for now it's the Google OAuth uid
-* [X] Put on production to increase testing of users and devices
-* [ ] Add random push notifications for clients from the server directly (not triggered externally from Postman, for instance)
-
-Push Service specifics:
-* [X] Add VAPID public and private keys
-* [X] Get subscription object from browser
-* [X] POST subscription object to the server to save
-* [X] Save subscription object in `app.locals` in server (for now)
-* [X] Setup [web-push](https://www.npmjs.com/package/web-push) library to submit a push event
-* [X] Trigger push event via server endpoint (externally from Postman)
-* [X] Setup persistent DB on Express server to hold onto _one_ subscription object per Google OAuth uid
-
-Not required:
-
-* [ ] Be able to unsubscribe from push notifications
-* [ ] Add app manifest to enable PWA home screen icon
-* [ ] Have a strategy for multiple devices under the same user account (how do you detect when someone is signed in if you have a subscription for that device? If they don't, how do you ask in a not annoying way?...)
+* Add relevant information and image to the push notification for this app
+* Handle what happens when the push notification is clicked
+* Add scheduled, random push notifications to users from the server (possibly using Bree library)
+* User can unsubscribe from push notifications
+* Add app manifest to enable PWA home screen icon
+* Consider a strategy for multiple devices under the same user account
