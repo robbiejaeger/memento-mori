@@ -24,6 +24,8 @@ Items that were not learning goals:
 * Gets subscription object from user's browser and saves that object to the DB along with their Google UID
 * Backend sends a notification event to the client's browser using Web Push API (currently triggered via endpoint on the server, `/sendapush`)
 
+**Note:** Currently, this app has been tested only with the Chrome browser.
+
 ### Features - In Progress
 
 * Add relevant information and image to the push notification for this app
